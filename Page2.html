@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Radar Chart</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>Radar Chart</h1>
+      <h2>How was your week?</h2>
+
+  <form>
+    <label>Health:</label>
+    <input type="number" id="health" name="health" min="1" max="7" value="4" required><br>
+
+    <label>Work/Study:</label>
+    <input type="number" id="work" name="work" min="1" max="7" value="4" required><br>
+
+    <label>Social Life:</label>
+    <input type="number" id="social" name="social" min="1" max="7" value="4" required><br>
+
+    <label>Hobbies/Interests:</label>
+    <input type="number" id="hobbies" name="hobbies" min="1" max="7" value="4" required><br>
+
+    <label>Personal Growth:</label>
+    <input type="number" id="growth" name="growth" min="1" max="7" value="4" required><br>
+
+    <label>Accomplishments:</label>
+    <input type="number" id="accomplishments" name="accomplishments" min="1" max="7" value="4" required><br>
+
+    <label>Challenges:</label>
+    <input type="number" id="challenges" name="challenges" min="1" max="7" value="4" required><br>
+
+    <button type="button" onclick="generateRadar()">Generate Radar Chart</button>
+    <button type="button" onclick="saveImage()">Save as Image</button>
+  </form>
+
+
+  <div style="width: 800px; height: 800px;">
+    <canvas id="radarChart"></canvas>
+  </div>
+
+  <script>
+    var chart; // global variable to store chart object
+
+    function generateRadar() {
+      var health = document.getElementById('health').value;
+      var work = document.getElementById('work').value;
+      var social = document.getElementById('social').value;
+      var hobbies = document.getElementById('hobbies').value;
+      var growth = document.getElementById('growth').value;
+      var accomplishments = document.getElementById('accomplishments').value;
+      var challenges = document.getElementById('challenges').value;
+
+        if (health < 1 || health > 7 ||
+            work < 1 || work > 7 ||
+            social < 1 || social > 7 ||
+            hobbies < 1 || hobbies > 7 ||
+            growth < 1 || growth > 7 ||
+            accomplishments < 1 || accomplishments > 7 ||
+            challenges < 1 || challenges > 7) {
+          alert('Error: Input values should be between 1 and 7.');
+          return;
+        }
+
+        var randomColor = 'rgba(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) ; // creates a random color
+
+
+
+
+        var ctx = document.getElementById('radarChart').getContext('2d');
+
+        if (chart) {
+          chart.destroy();
+        }
+
+
+      chart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['Health', 'Work/Study', 'Social Life', 'Hobbies/Interests', 'Personal Growth', 'Accomplishments', 'Challenges'],
+          datasets: [{
+            label: 'My Week',
+            data: [health, work, social, hobbies, growth, accomplishments, challenges],
+            backgroundColor: randomColor + ',0.2)',
+            borderColor: randomColor + ',0.6)',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          scale: {
+            ticks: {
+          min: 0,
+          max: 7,
+          stepSize: 7,
+        },
+        pointLabels: {
+          fontSize: 14
+        }
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+    }
+
+    function saveImage() {
+      var canvas = document.getElementById('radarChart');
+      var image = canvas.toDataURL('image/png');
+      var link = document.createElement('a');
+      link.download = 'radar_chart.png';
+      link.href = image;
+      link.click();
+    }
+  </script>
+</body>
+</html>
