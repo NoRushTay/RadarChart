@@ -106,9 +106,7 @@ input[type="text"]:focus {
 
 		function nextQuestion() {
 			var answer = document.getElementById("answer").value; // get the participant's answer
-			if (answer === "") { // check if the participant entered an answer
-				document.getElementById("status").innerHTML = "Please enter an answer."; // display error message
-			} else {
+			
 				gameIndex++; // increment game index
 				if (gameIndex === numQuestions) { // check if all questions have been asked
 					document.getElementById("game").innerHTML = "<h2>Game Over</h2><p>Thank you for participating in the closeness experiment.</p>"; // end game
@@ -117,7 +115,7 @@ input[type="text"]:focus {
 					document.getElementById("answer").value = ""; // clear the input field
 					document.getElementById("status").innerHTML = ""; // clear the status message
 				}
-			}
+			
 		}
 	</script>
 </body>
