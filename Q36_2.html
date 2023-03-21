@@ -74,7 +74,6 @@ input[type="text"]:focus {
 	<div id="game" style="display:none;">
 		<h2>Question</h2>
 		<p id="question"></p>
-		<input type="text" id="answer" placeholder="Type your answer here">
 		<button onclick="nextQuestion()">Next Question</button>
 		<p id="status"></p>
 	</div>
@@ -105,7 +104,6 @@ input[type="text"]:focus {
 		}
 
 		function nextQuestion() {
-			var answer = document.getElementById("answer").value; // get the participant's answer
 			
 				gameIndex++; // increment game index
 				if (gameIndex === numQuestions) { // check if all questions have been asked
