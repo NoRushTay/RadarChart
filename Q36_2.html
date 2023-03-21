@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Closeness Experiment</title>
+	<style>
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+h1, h2 {
+  font-weight: bold;
+  text-align: center;
+}
+
+p {
+  margin: 1em 0;
+  line-height: 1.5;
+}
+
+button {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
+#game {
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+#question {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 1em;
+  width: 80%;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#status {
+  color: red;
+  font-style: italic;
+  margin-top: 1em;
+}
+
+	</style>
+</head>
+<body>
+	<h1>Closeness Experiment</h1>
+	<p>Welcome to the gamified version of the closeness experiment made by Arthur Aron. The purpose of this experiment is to see how close two people can become by asking each other a set of increasingly personal questions. You will be randomly paired with another participant and take turns answering the questions.</p>
+	<button onclick="startGame()">Start Game</button>
+
+	<div id="game" style="display:none;">
+		<h2>Question</h2>
+		<p id="question"></p>
+		<input type="text" id="answer" placeholder="Type your answer here">
+		<button onclick="nextQuestion()">Next Question</button>
+		<p id="status"></p>
+	</div>
+
+	<script>
+		// define the questions
+		var questions = [
+			"What is your favorite movie?",
+			"What is your biggest fear?",
+			"What is the most embarrassing thing that has ever happened to you?",
+			"What is your biggest accomplishment?",
+			"What is your idea of a perfect day?",
+			"What is the most important thing in your life?",
+			"What is something you've always wanted to do but haven't had the chance to?",
+			"What is your favorite childhood memory?",
+			"What is your biggest regret?",
+			"What is your idea of a perfect relationship?"
+		];
+
+		var gameIndex = 0;
+		var numQuestions = questions.length;
+		var participantId = Math.floor(Math.random() * 1000); // generate random participant ID
+
+		function startGame() {
+			document.getElementById("game").style.display = "block"; // show the game
+			document.getElementById("question").innerHTML = questions[gameIndex]; // display the first question
+			document.getElementById("status").innerHTML = "Participant ID: " + participantId; // display the participant ID
+		}
+
+		function nextQuestion() {
+			var answer = document.getElementById("answer").value; // get the participant's answer
+			if (answer === "") { // check if the participant entered an answer
+				document.getElementById("status").innerHTML = "Please enter an answer."; // display error message
+			} else {
+				gameIndex++; // increment game index
+				if (gameIndex === numQuestions) { // check if all questions have been asked
+					document.getElementById("game").innerHTML = "<h2>Game Over</h2><p>Thank you for participating in the closeness experiment.</p>"; // end game
+				} else {
+					document.getElementById("question").innerHTML = questions[gameIndex]; // display the next question
+					document.getElementById("answer").value = ""; // clear the input field
+					document.getElementById("status").innerHTML = ""; // clear the status message
+				}
+			}
+		}
+	</script>
+</body>
+</html>
