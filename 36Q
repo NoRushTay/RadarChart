@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Trivia Game</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        font-size: 4em;
+        text-align: center;
+      }
+      button {
+        font-size: 2em;
+        padding: 1em;
+      }
+      #timer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="instructions">
+        <h1>Instructions</h1>
+        <button onclick="startGame()">Play</button>
+      </div>
+    </div>
+
+    <script>
+      const levels = [
+        [
+          "What is the capital of France?",
+          "Who painted the Mona Lisa?",
+          "What is the largest mammal in the world?",
+          "Which planet is known as the Red Planet?",
+          "What is the smallest country in the world?",
+          "Who wrote the novel 1984?",
+          "Who was the first person to walk on the moon?",
+          "Who painted the ceiling of the Sistine Chapel?",
+          "What is the highest mountain in Africa?",
+          "What is the largest ocean in the world?",
+          "Who composed the opera The Barber of Seville?",
+          "What is the largest desert in the world?"
+        ],
+        [
+          "What is the largest country in the world by land area?",
+          "Who wrote the novel To Kill a Mockingbird?",
+          "Who composed the ballet The Nutcracker?",
+          "Who was the first president of the United States?",
+          "What is the largest organ in the human body?",
+          "What is the smallest bone in the human body?",
+          "What is the largest organ in the human brain?",
+          "Who painted The Starry Night?",
+          "What is the currency of Japan?",
+          "What is the longest river in South America?",
+          "What is the smallest planet in the solar system?",
+          "Who wrote the novel War and Peace?"
+        ],
+        [
+          "Who painted Guernica?",
+          "Who composed the opera Carmen?",
+          "Who was the first woman to win a Nobel Prize?",
+          "What is the smallest continent in the world?",
+          "Who wrote the novel Crime and Punishment?",
+          "What is the largest bird in the world?",
+          "Who was the first person to walk on the moon?",
+          "Who painted the ceiling of the Sistine Chapel?",
+          "What is the highest mountain in Africa?",
+          "What is the largest ocean in the world?",
+          "Who composed the opera The Barber of Seville?",
+          "What is the largest desert in the world?"
+        ]
+      ];
+      const slideDuration = 15 * 60 * 1000; // 15 minutes
+      const levelDuration = levels.length * slideDuration;
+
+      let level = 0;
+      let slide = 0;
+      let startTime;
+      let intervalId;
+
+      function startGame() {
+        document.getElementById("instructions").style.display = "none";
+        document.getElementById("container").onclick = nextSlide;
+        showSlide();
+        startTime = Date.now();
+        intervalId = setInterval(updateTimer, 1000);
+      }
+
+      function showSlide() {
+        document.getElementById("container").innerHTML = levels[level][slide];
+      }
+
+      function nextSlide() {
+        slide++;
+        if (slide >= levels[level].length) {
+          level++;
+          slide = 0;
+          if (level >= levels.length) {
+            clearInterval
