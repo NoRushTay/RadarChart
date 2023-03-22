@@ -102,7 +102,7 @@ input[type="text"]:focus {
 			document.getElementById("game").style.display = "block"; // show the game
 			document.getElementById("question").innerHTML = questions[gameIndex]; // display the first question
 			document.getElementById("status").innerHTML = "Participant ID: " + participantId; // display the participant ID
-			gameIndex = 0
+			gameIndex++; // increment game index to zero
 		}
 		
 		document.addEventListener("click", nextQuestion);
