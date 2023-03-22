@@ -76,6 +76,7 @@ input[type="text"]:focus {
 		<p id="question"></p>
 		<p id="status"></p>
 	</div>
+	<div id="countdown"></div>
 
 	<script>
 		// define the questions
@@ -120,6 +121,28 @@ input[type="text"]:focus {
 				}
 			
 		}
+		
+		
+		// TIMER
+		
+		var timeLeft = 60; // the intervals are of 15 seconds, so 15 minutes will be 60
+		var countdown = document.getElementById("countdown");
+		var minutes = timeLeft;
+
+		function ClockCheck() { 
+			minutes = Math.floor(timeLeft / 4) - 1;
+			countdown.innerHTML = minutes + "m ";
+
+			if (timeLeft <= 0) {
+				clearInterval(timer);
+				document.body.classList.add("time-up");
+				countdown.innerHTML = "Time is up!";
+			}
+
+			timeLeft--;
+		};
+		var timer = setInterval(ClockCheck, 15000); // the intervals are of 15 seconds
+		ClockCheck();
 		
 	</script>
 </body>
