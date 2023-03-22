@@ -2,77 +2,107 @@
 <html>
 <head>
 	<title>Closeness Experiment</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #f7f7f7;
-}
+		body {
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			background-color: #f7f7f7;
+			margin: 0;
+			padding: 0;
+		}
 
-h1, h2 {
-  font-weight: bold;
-  text-align: center;
-}
+		h1, h2 {
+			font-weight: bold;
+			text-align: center;
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
 
-p {
-  margin: 1em 0;
-  line-height: 1.5;
-}
+		p {
+			margin: 1rem 0;
+			line-height: 1.5;
+			text-align: justify;
+			padding: 0 1rem;
+		}
 
-button {
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
+		button {
+			font-size: 1.2rem;
+			font-weight: bold;
+			color: #fff;
+			background-color: #007bff;
+			border: none;
+			border-radius: 5px;
+			padding: 1rem 2rem;
+			cursor: pointer;
+			display: block;
+			margin: 2rem auto;
+		}
 
-button:hover {
-  background-color: #0069d9;
-}
+		button:hover {
+			background-color: #0069d9;
+		}
 
-#game {
-  margin: 0 auto;
-  max-width: 600px;
-  text-align: center;
-}
+		#game {
+			max-width: 600px;
+			text-align: center;
+			margin: 0 auto;
+			padding: 1rem;
+		}
 
-#question {
-  font-size: 24px;
-  font-weight: bold;
-}
+		#question {
+			font-size: 1.5rem;
+			font-weight: bold;
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
 
-input[type="text"] {
-  font-size: 18px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 1em;
-  width: 80%;
-}
+		input[type="text"] {
+			font-size: 1.2rem;
+			padding: 1rem;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin-top: 1rem;
+			width: 80%;
+		}
 
-input[type="text"]:focus {
-  outline: none;
-  border-color: #007bff;
-}
+		input[type="text"]:focus {
+			outline: none;
+			border-color: #007bff;
+		}
 
-#status {
-  color: red;
-  font-style: italic;
-  margin-top: 1em;
-}
+		#status {
+			color: red;
+			font-style: italic;
+			margin-top: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		@media screen and (max-width: 600px) {
+			h1 {
+				font-size: 2.5rem;
+			}
+			h2 {
+				font-size: 1.5rem;
+			}
+			p {
+				font-size: 1rem;
+			}
+			button {
+				font-size: 1rem;
+			}
+			input[type="text"] {
+				font-size: 1rem;
+			}
+		}
 
 	</style>
 </head>
 <body>
 	<div id="instructions">
-	<h1>Closeness Experiment</h1>
-	<p>Welcome to the gamified version of the closeness experiment made by Arthur Aron. The purpose of this experiment is to see how close two people can become by asking each other a set of increasingly personal questions. You will be randomly paired with another participant and take turns answering the questions.</p>
-
-	<button onclick="startGame()">Start Game</button>
-</div>
+		<h1>Closeness Experiment</h1>
+		<p>Welcome to the gamified version of the closeness experiment made by Arthur Aron. The purpose of this experiment is to see how close two people can become by asking each other a set of increasingly personal questions. You will be randomly paired with another participant and take turns answering the questions.</p>
+		<button onclick="startGame()">Start Game</button>
+	</div>
 
 	<div id="game" style="display:none;">
 		<h2>Question</h2>
