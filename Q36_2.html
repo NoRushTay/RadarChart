@@ -67,9 +67,12 @@ input[type="text"]:focus {
 	</style>
 </head>
 <body>
+	<div id="instructions">
 	<h1>Closeness Experiment</h1>
 	<p>Welcome to the gamified version of the closeness experiment made by Arthur Aron. The purpose of this experiment is to see how close two people can become by asking each other a set of increasingly personal questions. You will be randomly paired with another participant and take turns answering the questions.</p>
+
 	<button onclick="startGame()">Start Game</button>
+</div>
 
 	<div id="game" style="display:none;">
 		<h2>Question</h2>
@@ -97,6 +100,8 @@ input[type="text"]:focus {
 		var numQuestions = questions.length;
 		var participantId = Math.floor(Math.random() * 1000); // generate random participant ID
 		var minutes = -1;
+		var timeLeft = 60; // the intervals are of 15 seconds, so 15 minutes will be 60
+
 		
 
 		function startGame() {
@@ -104,9 +109,9 @@ input[type="text"]:focus {
 			document.getElementById("question").innerHTML = questions[gameIndex]; // display the first question
 			document.getElementById("status").innerHTML = "Participant ID: " + participantId; // display the participant ID
 			gameIndex++; // increment game index to zero
-			var timeLeft = 60; // the intervals are of 15 seconds, so 15 minutes will be 60
 			minutes = timeLeft;
 			ClockCheck(); // start the clock
+			document.getElementById("instructions").innerHTML = ""; // end game
 
 		}
 		
@@ -118,9 +123,9 @@ input[type="text"]:focus {
 					gameIndex++; // increment game index
 					if (gameIndex === numQuestions) { // check if all questions have been asked
 						document.getElementById("game").innerHTML = "<h2>Game Over</h2><p>Thank you for participating in the closeness experiment.</p>"; // end game
+				clearInterval(timer);
 					} else {
 						document.getElementById("question").innerHTML = questions[gameIndex]; // display the next question
-						document.getElementById("answer").value = ""; // clear the input field
 						document.getElementById("status").innerHTML = ""; // clear the status message
 					}
 				}
@@ -133,7 +138,7 @@ input[type="text"]:focus {
 		var countdown = document.getElementById("countdown");
 
 		function ClockCheck() { 
-			if minutes>=0{
+			if (minutes >= 0) {
 				minutes = Math.floor(timeLeft / 4) - 1;
 				countdown.innerHTML = minutes + "m ";
 
@@ -143,7 +148,7 @@ input[type="text"]:focus {
 					countdown.innerHTML = "Time is up!";
 				}
 				timeLeft--;
-			};
+			}
 		}
 		var timer = setInterval(ClockCheck, 15000); // the intervals are of 15 seconds
 		
