@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl" lang="ar">
 <head>
 	<title>Closeness Experiment</title>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,7 +103,7 @@
 <body>
 	<div id="instructions">
 		<h1>שאלות קירבה</h1>
-		<p>Welcome to the gamified version of the closeness experiment made by Arthur Aron. The purpose of this experiment is to see how close two people can become by asking each other a set of increasingly personal questions. You will be randomly paired with another participant and take turns answering the questions.</p>
+		<p>שאלות להאצת הקירבה בין שני אנשים - ובחינת התחושה של קירבה עם האדם שאיתך. כל אחד עונה על כל אחת מהשאלות, כל פעם משתתף.ת אחר.ת מתחיל.ה. שימו לב - אם את.ה מרגיש.ה לא בנוח בסיטואציה, כדאי לעצור ולעשות משהו אחר!</p>
 		<button onclick="startGame()">Start Game</button>
 	</div>
 
@@ -116,18 +116,21 @@
 
 	<script>
 		// define the questions
-		var questions = [
-			"What is your favorite movie?",
-			"What is your biggest fear?",
-			"What is the most embarrassing thing that has ever happened to you?",
-			"What is your biggest accomplishment?",
-			"What is your idea of a perfect day?",
-			"What is the most important thing in your life?",
-			"What is something you've always wanted to do but haven't had the chance to?",
-			"What is your favorite childhood memory?",
-			"What is your biggest regret?",
-			"What is your idea of a perfect relationship?"
-		];
+var questions = [
+"את.ה יכול.ה להזמין לארוחת ערב כל אחד בעולם, את מי היית מזמינ.ה?",
+ "היית רוצה להיות מפורסם.ת? אם כן, בזכות מה ואיך?",
+ "לפני שיחה חשובה את.ה מתאמנ.ת על מה תגיד.י? למה?",
+ "מה עבורך ההגדרה ליום מושלם?",
+ "מתי פעם אחרונה שרת לעצמך? ומתי פעם אחרונה שרת למישהו אחר?",
+ "אם היית יכול.ה להגיע לגיל 90, ולשמור את היכולות הקוגניטיביות או את הגוף של גיל 30 - במה היית בוחר?",
+ "יש לך השערה או תחושה איך תמות.י?",
+ "מנה 3 דברים שיש לך ולפרנטר במשותף",
+ "על מה בחייך את.ה מודה במיוחד?",
+ "אם היית יכול.ה לשנות דבר אחד לגבי האופן בו גדלת, מה היית משנה?",
+ "ספר.י לפרטנר את סיפור חייך בצורה מפורטת ככל הניתן, ב-4 דקות",
+ "אם יכולת לקום מחר בבוקר עם תכונה או יכולת חדשה, מה היית רוצה?"
+];
+
 
 		var gameIndex = -1;
 		var numQuestions = questions.length;
@@ -155,7 +158,7 @@
 				if (gameIndex >= 0) {
 					gameIndex++; // increment game index
 					if (gameIndex === numQuestions) { // check if all questions have been asked
-						document.getElementById("game").innerHTML = "<h2>Game Over</h2><p>Thank you for participating in the closeness experiment.</p>"; // end game
+						document.getElementById("game").innerHTML = "<h2>שלב 1 הסתיים</h2><p>שלב 1 הסתיים, בהמשך גם שלבים 2 ו-3 יהיו זמינים.</p>"; // end game
 				clearInterval(timer);
 					} else {
 						document.getElementById("question").innerHTML = questions[gameIndex]; // display the next question
