@@ -105,11 +105,11 @@ input[type="text"]:focus {
 			gameIndex = 0
 		}
 		
-		document.addEventListener("click", nextQuestion());
+		document.addEventListener("click", nextQuestion);
 
 		function nextQuestion() {
 			
-				if gameIndex>=0 {
+				if (gameIndex >= 0) {
 					gameIndex++; // increment game index
 					if (gameIndex === numQuestions) { // check if all questions have been asked
 						document.getElementById("game").innerHTML = "<h2>Game Over</h2><p>Thank you for participating in the closeness experiment.</p>"; // end game
