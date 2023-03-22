@@ -96,6 +96,7 @@ input[type="text"]:focus {
 		var gameIndex = -1;
 		var numQuestions = questions.length;
 		var participantId = Math.floor(Math.random() * 1000); // generate random participant ID
+		var minutes = -1;
 		
 
 		function startGame() {
@@ -103,6 +104,10 @@ input[type="text"]:focus {
 			document.getElementById("question").innerHTML = questions[gameIndex]; // display the first question
 			document.getElementById("status").innerHTML = "Participant ID: " + participantId; // display the participant ID
 			gameIndex++; // increment game index to zero
+			var timeLeft = 60; // the intervals are of 15 seconds, so 15 minutes will be 60
+			minutes = timeLeft;
+			ClockCheck(); // start the clock
+
 		}
 		
 		document.addEventListener("click", nextQuestion);
@@ -125,24 +130,21 @@ input[type="text"]:focus {
 		
 		// TIMER
 		
-		var timeLeft = 60; // the intervals are of 15 seconds, so 15 minutes will be 60
 		var countdown = document.getElementById("countdown");
-		var minutes = timeLeft;
 
 		function ClockCheck() { 
-			minutes = Math.floor(timeLeft / 4) - 1;
-			countdown.innerHTML = minutes + "m ";
+			if minutes>=0{
+				minutes = Math.floor(timeLeft / 4) - 1;
+				countdown.innerHTML = minutes + "m ";
 
-			if (timeLeft <= 0) {
-				clearInterval(timer);
-				document.body.classList.add("time-up");
-				countdown.innerHTML = "Time is up!";
-			}
-
-			timeLeft--;
-		};
+				if (timeLeft <= 0) {
+					clearInterval(timer);
+					document.body.classList.add("time-up");
+					countdown.innerHTML = "Time is up!";
+				}
+				timeLeft--;
+			};
 		var timer = setInterval(ClockCheck, 15000); // the intervals are of 15 seconds
-		ClockCheck();
 		
 	</script>
 </body>
