@@ -93,30 +93,35 @@ input[type="text"]:focus {
 			"What is your idea of a perfect relationship?"
 		];
 
-		var gameIndex = 0;
+		var gameIndex = -1;
 		var numQuestions = questions.length;
 		var participantId = Math.floor(Math.random() * 1000); // generate random participant ID
+		
 
 		function startGame() {
 			document.getElementById("game").style.display = "block"; // show the game
 			document.getElementById("question").innerHTML = questions[gameIndex]; // display the first question
 			document.getElementById("status").innerHTML = "Participant ID: " + participantId; // display the participant ID
+			gameIndex = 0
 		}
+		
+		document.addEventListener("click", nextQuestion());
 
 		function nextQuestion() {
 			
-				gameIndex++; // increment game index
-				if (gameIndex === numQuestions) { // check if all questions have been asked
-					document.getElementById("game").innerHTML = "<h2>Game Over</h2><p>Thank you for participating in the closeness experiment.</p>"; // end game
-				} else {
-					document.getElementById("question").innerHTML = questions[gameIndex]; // display the next question
-					document.getElementById("answer").value = ""; // clear the input field
-					document.getElementById("status").innerHTML = ""; // clear the status message
+				if gameIndex>=0 {
+					gameIndex++; // increment game index
+					if (gameIndex === numQuestions) { // check if all questions have been asked
+						document.getElementById("game").innerHTML = "<h2>Game Over</h2><p>Thank you for participating in the closeness experiment.</p>"; // end game
+					} else {
+						document.getElementById("question").innerHTML = questions[gameIndex]; // display the next question
+						document.getElementById("answer").value = ""; // clear the input field
+						document.getElementById("status").innerHTML = ""; // clear the status message
+					}
 				}
 			
 		}
 		
-		document.addEventListener("click", nextQuestion());
 	</script>
 </body>
 </html>
