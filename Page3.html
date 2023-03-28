@@ -102,23 +102,23 @@
     <label>Health:</label>
     <input type="number" inputmode="numeric" pattern="[0-9]*" id="health" name="health" min="1" max="7" value="4" required>
 
-    <label>Work/Study:</label>
-    <input type="number" inputmode="numeric" pattern="[0-9]*" id="work" name="work" min="1" max="7" value="4" required>
+    <label>Career and Work-Life Balance:</label>
+    <input type="number" inputmode="numeric" pattern="[0-9]*" id="career" name="career" min="1" max="7" value="4" required>
 
     <label>Social Life:</label>
     <input type="number" inputmode="numeric" pattern="[0-9]*" id="social" name="social" min="1" max="7" value="4" required>
 
-    <label>Hobbies/Interests:</label>
-    <input type="number" inputmode="numeric" pattern="[0-9]*" id="hobbies" name="hobbies" min="1" max="7" value="4" required>
+    <label>Finances and Economic Stability:</label>
+    <input type="number" inputmode="numeric" pattern="[0-9]*" id="finances" name="finances" min="1" max="7" value="4" required>
 
     <label>Personal Growth:</label>
     <input type="number" inputmode="numeric" pattern="[0-9]*" id="growth" name="growth" min="1" max="7" value="4" required>
 
-    <label>Accomplishments:</label>
-    <input type="number" inputmode="numeric" pattern="[0-9]*" id="accomplishments" name="accomplishments" min="1" max="7" value="4" required>
+    <label>Community Involvement:</label>
+    <input type="number" inputmode="numeric" pattern="[0-9]*" id="community" name="community" min="1" max="7" value="4" required>
 
-    <label>Challenges:</label>
-    <input type="number" inputmode="numeric" pattern="[0-9]*" id="challenges" name="challenges" min="1" max="7" value="4" required>
+    <label>Leisure and Hobbies:</label>
+    <input type="number" inputmode="numeric" pattern="[0-9]*" id="leisure" name="leisure" min="1" max="7" value="4" required>
 
     <button type="button" onclick="generateRadar()">Generate Radar Chart</button>
     <button type="button" onclick="saveImage()">Save as Image</button>
@@ -137,20 +137,20 @@
 
     function generateRadar() {
       var health = document.getElementById('health').value;
-      var work = document.getElementById('work').value;
+      var career = document.getElementById('career').value;
       var social = document.getElementById('social').value;
-      var hobbies = document.getElementById('hobbies').value;
+      var finances = document.getElementById('finances').value;
       var growth = document.getElementById('growth').value;
-      var accomplishments = document.getElementById('accomplishments').value;
-      var challenges = document.getElementById('challenges').value;
+      var community = document.getElementById('community').value;
+      var leisure = document.getElementById('leisure').value;
 
         if (health < 1 || health > 7 ||
-            work < 1 || work > 7 ||
+            career < 1 || career > 7 ||
             social < 1 || social > 7 ||
-            hobbies < 1 || hobbies > 7 ||
+            finances < 1 || finances > 7 ||
             growth < 1 || growth > 7 ||
-            accomplishments < 1 || accomplishments > 7 ||
-            challenges < 1 || challenges > 7) {
+            community < 1 || community > 7 ||
+            leisure < 1 || leisure > 7) {
           alert('Error: Input values should be between 1 and 7.');
           return;
         }
@@ -170,10 +170,10 @@
       chart = new Chart(ctx, {
         type: 'radar',
         data: {
-          labels: ['Health', 'Work/Study', 'Social Life', 'Hobbies/Interests', 'Personal Growth', 'Accomplishments', 'Challenges'],
+          labels: ['Health', 'Career', 'Social Life', 'Finances', 'Personal Growth', 'Community', 'leisure'],
           datasets: [{
             label: 'My Week',
-            data: [health, work, social, hobbies, growth, accomplishments, challenges],
+            data: [health, career, social, finances, growth, community, leisure],
             backgroundColor: randomColor + ',0.2)',
             borderColor: randomColor + ',0.6)',
             borderWidth: 2
